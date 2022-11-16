@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*@import "~bootstrap/dist/css/bootstrap.css";*/
+
+.span-visibility {
+  background: rgba(222, 184, 135, 0.5) !important;
+}
+
+
+ul app-todo-item:nth-child(even) li .note {
+  transform: rotate(4deg);
+  position: relative;
+  top: 5px;
+}
+
+ul app-todo-item:nth-child(3n) li .note {
+  transform: rotate(-3deg);
+  position: relative;
+  top: -5px;
+}
+
+ul app-todo-item:nth-child(5n) li .note {
+  transform: rotate(5deg);
+  position: relative;
+  top: -10px;
+}

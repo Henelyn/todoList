@@ -1,0 +1,21 @@
+<!-- Komponent, kus on pealkirja ja märkuse kast + lisa nupp -->
+<form class="col-4 gy-2 gx-3 align-items-center m-auto">
+
+  <div class="form-floating mb-0">
+    <input [(ngModel)]="newTitleText" name="title" class="form-control" id="floatingTitle" type="text" placeholder="What's your note about?"> <!-- Märkme pealkirja kast. ngModel = newTitleText, tähendab, et see kast on selle muutujaga ära seotud -->
+    <label for="floatingTitle">Add note title :)</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <textarea [(ngModel)]="newNoteText" name="note" id="floatingTextbox" class="form-control"
+              placeholder="E.g Things I need to remember..."></textarea> <!-- Märkme sisu kast. ngModel = newNoteText, tähendab, et see kast on selle muutujaga ära seotud. -->
+    <label for="floatingTextbox">Add your note :)</label>
+
+    <div class="d-grid">
+      <button (click)="addTodo.emit({noteText: newNoteText, noteTitle: newTitleText}); newNoteText=''; newTitleText=''" class="btn btn-sm btn-warning">Add</button>
+      <!-- Märkme lisamise nupp. (click) siin annab ette, mis juhtub siis kui sellele nupule vajutada.
+           Ma olen aru saanud, et emit meetod on komponendi vaheliseks suhtluseks. emit abiga saad anda lapskomponendist info tagasi vanem komponenti.
+           emit sisse läheb siin objekt, mille sisuks on newNoteText ja newTitleText. Lisaks ta tühjendab muutujad newNoteText ja newTitleText ja kuna need on seotud nende kastidega üleval, siis need kastid lähevad tühjaks. -->
+    </div>
+  </div>
+</form>

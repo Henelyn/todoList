@@ -1,0 +1,21 @@
+<!-- Komponent, mis kuvab märkme -->
+<li> <!-- usutavasti saaks mitte listina ka teha, ainult nt div'idega -->
+  <div class="note" [ngClass]="todo.isComplete ? 'list-group-item-success' : 'list-group-item-danger'">
+    <!-- märkme põhikonteiner. Kui siinse todo objekti isComplete on tõene, siis lisatakse 'list-group-item-success(roheline)' klass, vastasel juhul 'list-group-item-danger(punane)' klass -->
+    <h4>{{todo.title}}</h4> <!-- Kuvab märkme pealkirja -->
+    <span class="description">{{todo.description}}</span> <!-- Kuvab märkme kirjelduse -->
+    <div class="note-buttons"> <!-- Märkme nuppude konteiner -->
+      <button *ngIf="!todo.isComplete" class="btn btn-sm btn-outline-info m-1">&#9998;</button>
+      <!-- Muutmise nupp, funktsionaalsust hetkel ei ole. Seda nuppu kuvatakse ainult siis kui märkme 'isComplete' = false -->
+      <button (click)="changeTodoStatus.emit(todo)" *ngIf="!todo.isComplete" class="btn btn-sm btn-outline-success m-1">
+        <!-- Staatuse muutmise nupp. Seda nuppu kuvatakse ainult siis kui märkme 'isComplete' = false -->
+        &checkmark;
+      </button>
+      <button (click)="changeTodoStatus.emit(todo)" *ngIf="todo.isComplete"
+              class="btn btn-sm btn-outline-warning m-1">&#9888;
+      </button> <!-- Staatuse muutmise nupp. Seda nuppu kuvatakse ainult siis kui märkme 'isComplete' = true -->
+      <button class="btn btn-sm btn-outline-danger m-1">&cross;</button>
+      <!-- Kustutamsie nupp, funktsionaalsust hetkel ei ole -->
+    </div>
+  </div>
+</li>

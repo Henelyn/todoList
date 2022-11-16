@@ -1,0 +1,13 @@
+<!-- Komponent, mis kuvab add-item komponendi (pealkiri ja märkuse kast + lisa nupp)
+      ja kuvab 'unordered-list' tagi vahel todo-item komponendi (võtab need todoList massiivist) -->
+<section>
+  <app-add-item (addTodo)="onAddTodo($event)"></app-add-item><!-- Ootab addTodo tegevust. See emit'itakse add-item komponendist. Kui sealt tuleb see tegevus, siis käivitatakse 'onAddTodo' funktsioon tulnud tegevuse sisuga ($event), meil on see objekt, kus on märkme pealkiri ja sisu tekst. -->
+
+  <ul> <!-- Siin on loop, mis kuvab todo-item komponente loopis. Võtab need todoList massiivist. (changeTodoStatus) on jälle tegevus, mida oodatakse alamkomponendist, sealt see emit'itakse siia komponenti ja siin kutsutakse välja 'onChangeTodoStatus' funktsioon -->
+    <app-todo-item
+      *ngFor="let todo of todoList"
+      [todo]="todo"
+      (changeTodoStatus)="onChangeTodoStatus($event)">
+    </app-todo-item>
+  </ul>
+</section>
